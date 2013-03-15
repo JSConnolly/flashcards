@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+  
   <link rel="stylesheet" href="/css/normalize.css">
 
-  <title></title>
+  <title>Flashcards</title>
+
+
+
+
+
 </head>
-<body>
-  <%= yield %>
-</body>
+
+<div class = "container">
+
+  <header>
+    <nav>
+      <h1><a href="/">Do The Truffle Shuffle!</a></h1>
+    </nav>
+  </header>
+
+  <body>
+    <%= yield %>
+  </body>
+
+</div>
+
 </html>
