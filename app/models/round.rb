@@ -1,5 +1,5 @@
 class Round < ActiveRecord::Base
-  attr_reader :remaining_cards, :current_card
+  attr_reader :remaining_cards, :current_card, :last_try
   belongs_to :users
   belongs_to :decks
   has_many :guesses
@@ -21,21 +21,17 @@ class Round < ActiveRecord::Base
 
   def guess(input)
     guess = Guess.create( guess: input, round_id: id, card_id: @current_card.id)
-    if guess.check 
-      win_card
-      return true
-    else 
-      lose_card
-      return false
-    end
+    guess.check(input) ? win_card : lose_card
   end
 
   def win_card
     num_correct += 1
+    @last_try = true
   end
 
   def lose_card
     num_incorrect += 1
+    @last_try = false
   end
 
 
