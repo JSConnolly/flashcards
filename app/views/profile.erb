@@ -1,1 +1,42 @@
 <p><%= @user.name %></p>
+
+
+  <nav class = "profile">
+    <div class="logo">
+      <h2>Your</h2><h2>Truffle</h2><h2>Shuffle!</h2>
+    </div>
+
+    <form action = "/deck" method = "get" class = "choose">
+      <select name = "deck">
+        <% @decks = Deck.all %>
+        <% @decks.each do |type| %>
+          <option value= "<%= type.name %>" ><%=type.name %></option>
+
+        <%= end %>
+
+      </select>
+      <input type="submit" value="Play!" class = "choose_button">
+    </form>
+    
+    <div class = "profile_breadcrumbs">
+      <a href = "/profile">Profile</a>
+      <a href = "/logout">Log Out</a>
+    </div>
+  
+  </nav>
+
+
+<link rel="stylesheet" href="/css/login_signup.css">
+<div class="content">
+
+<form action="/login" method="post">
+    <fieldset class = "logon">
+      <legend>Log On</legend>
+      <input type="text"   name="email" placeholder = "Email"><br>
+      <input type="password"   name="password" placeholder = "Password"><br>
+      <input type="submit" name="logon" class = "submit" value = "Log On!">
+    </fieldset>
+
+</form>
+
+</div>
