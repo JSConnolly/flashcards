@@ -1,31 +1,5 @@
-
+<%= erb :_top_nav %>
 <div class="content">
-
-
-  <nav class = "profile">
-    <div class="logo">
-      <h2>Your</h2><h2>Truffle</h2><h2>Shuffle!</h2>
-    </div>
-
-    <form action = "/deck" method = "get" class = "choose">
-      <select name = "deck">
-        <% @decks = Deck.all %>
-        <% @decks.each do |type| %>
-          <option value= "<%= type.name %>" ><%=type.name %></option>
-
-        <%= end %>
-
-      </select>
-      <input type="submit" value="Play!" class = "choose_button">
-    </form>
-    
-    <div class = "profile_breadcrumbs">
-      <a href = "/profile">Profile</a>
-      <a href = "/logout">Log Out</a>
-    </div>
-  
-  </nav>
-
 
   <form action = "/guess" method = "post" class = "card">
     <fieldset>
@@ -33,7 +7,6 @@
       <input type = "hidden" name = "round_id" value = "<%= @round.id %>"
     <article>
       <p><%= @card.question %></p>
-      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
     </article>
     <input type = "text" name = "answer" class = "answer" placeholder = "Answer goes here.">
     <input type = "submit" value = "Guess!" class = "guess">
