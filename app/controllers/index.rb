@@ -13,15 +13,20 @@ get '/signup' do
 end
 
 post '/signup' do
-  @user = User.new(params[:signup]) 
+  @user = User.new( :name => params[:user][:name], :email => params[:user][:email])
+  @user.password =  params[:user][:password]
+
   unless @user.save
     # errors
+    puts params[:user]
+    p params[:user][:password]
+    puts @user.password
   end
-  erb :profile
+  @user
+  erb :profile  
 end
 
 get '/login' do
-
   erb :login
 end
 
@@ -34,10 +39,11 @@ end
 
 get '/profile/:id' do
   @user = User.find(params[:id])
-  if @token == @user.email
+  if session[:email] == @user.email
     @user
     erb :profile
   else
+    puts "Hey"
     redirect '/login'
   end
 end

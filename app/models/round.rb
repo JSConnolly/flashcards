@@ -6,8 +6,7 @@ class Round < ActiveRecord::Base
 
   def initialize
     @deck = Deck.find(deck_id)
-    @deck.shuffle!
-    @remaining_cards = @deck.cards
+    @remaining_cards = @deck.cards.shuffle
   end
 
   def next_card

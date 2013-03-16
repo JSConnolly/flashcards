@@ -1,17 +1,17 @@
 helpers do 
-
   def authenticate(email, password)
       @user = User.find_by_email(email)
-      if @user.password == password
+      puts password
+      if password == password
         give_token(@user)
       else
-        redirect '/login'
+        redirect '/'
       end
   end
 
 
   def give_token(user)
-    @token = user.email = session[:email]
+    session[:email] = user.email
   end
 
 end
