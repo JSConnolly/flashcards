@@ -39,7 +39,7 @@ end
 
 get '/profile/:id' do
   @user = User.find(params[:id])
-  if session[:email] == @user.email
+  if current_user == @user
     @user
     erb :profile
   else
@@ -74,14 +74,13 @@ get '/game/:round' do
 end
 
 post '/game' do
-  if Decks.find(params[:deck])
+  if Deck.find(params[:deck])
     @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
     redirect '/game/#{@round.id}'
   end
 end
 
 get '/user/id/deck/:card' do
-
 
   erb :game
 end
