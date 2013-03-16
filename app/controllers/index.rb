@@ -61,11 +61,11 @@ end
 
 
 get '/game/:round' do
-  
   unless @round.done?
     @round.next_card
     @card = @round.current_card
     @last_try = @round.last_try
+    # @data = [@last_try, @card]
     return erb :game
   end
 

@@ -1,9 +1,10 @@
 class Round < ActiveRecord::Base
   attr_reader :remaining_cards, :current_card, :last_try
+
   belongs_to :users
   belongs_to :decks
   has_many :guesses
-  has_many :cards, through :decks
+  has_many :cards, :through => :decks
 
   def initialize
     # @deck = Deck.find(deck_id)

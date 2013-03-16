@@ -1,28 +1,20 @@
-
+<%= erb :_top_nav %>
 <div class="content">
-  
-  <hgroup>
-    <div class="landing_image"><img src="/images/landing.png" height="500" width="340"></div>
-    <h1 class="first">Do The</h1>
-    <h1 class ="second">Truffle</h1>
-    <h1 class ="third">Shuffle!</h1>
-  </hgroup>
 
-  <% if @card %>
-  <form action="/guess" method="post">
-    <fieldset class = "card">
-      <legend><%= @card.deck.name %></legend>
+  <form action = "/guess" method = "post" class = "card">
+    <fieldset>
+      <legend> <%= @card.deck.name %> </legend>
       <input type = "hidden" name = "round_id" value = "<%= @round.id %>"
-      Question:
-      <textarea name="question"> <%= @card.question %></textarea>
-      <input type="text"   name="answer" placeholder = "Answer"><br>
-      <input type="submit" value = "Guess!">
+    <article>
+      <p><%= @card.question %></p>
+    </article>
+    <input type = "text" name = "answer" class = "answer" placeholder = "Answer goes here.">
+    <input type = "submit" value = "Guess!" class = "guess">
     </fieldset>
-  <% else %>
-  <p>No cards to show, start a new game</p>
-  <% end %>
   </form>
 
+<%=@round.next_card%>
+<%=@card%>
+<%=@last_try%>
+
 </div>
-
-
