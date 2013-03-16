@@ -4,7 +4,8 @@
   <form action = "/guess" method = "post" class = "card">
     <fieldset>
       <legend> <%= @card.deck.name %> </legend>
-      <input type = "hidden" name = "round_id" value = "<%= @round.id %>"
+      <input type = "hidden" name = "round_id" value = "<%= @round.id %>">
+      <input type = "hidden" name= "remaining_cards" value = "<%= @cards_next_round %>">
     <article>
       <p><%= @card.question %></p>
     </article>
@@ -12,6 +13,7 @@
     <input type = "submit" value = "Guess!" class = "guess">
     </fieldset>
   </form>
+  <%= "cards next round = #{@cards_next_round}" %>
 
 <%=@round.next_card%>
 <%=@card%>

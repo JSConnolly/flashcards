@@ -1,7 +1,7 @@
 class Guess < ActiveRecord::Base
   belongs_to :card
   belongs_to :round
-  before_save :check_guess
+  before_save :check
 
   def check
     if guess.strip.downcase == Card.find(card_id).answer.strip.downcase

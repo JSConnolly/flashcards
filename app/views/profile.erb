@@ -9,7 +9,7 @@
         <option>Choose A Deck</option>
         <% @decks = Deck.all %>
         <% @decks.each do |type| %>
-          <option value= "<%= type.name %>" ><%=type.name %></option>
+          <option value= "<%= type.id %>" ><%=type.name %></option>
 
         <% end %>
 
