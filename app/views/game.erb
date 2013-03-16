@@ -11,7 +11,8 @@
   <% if @card %>
   <form action="/guess" method="post">
     <fieldset class = "card">
-      <legend><%= @card.deck %></legend>
+      <legend><%= @card.deck.name %></legend>
+      <input type = "hidden" name = "round_id" value = "<%= @round.id %>"
       Question:
       <textarea name="question"> <%= @card.question %></textarea>
       <input type="text"   name="answer" placeholder = "Answer"><br>
@@ -23,3 +24,5 @@
   </form>
 
 </div>
+
+
