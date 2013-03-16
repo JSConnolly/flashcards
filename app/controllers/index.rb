@@ -65,6 +65,7 @@ get '/game/:round' do
     @round.next_card
     @card = @round.current_card
     @last_try = @round.last_try
+    # @data = [@last_try, @card]
     return erb :game
   end
 
@@ -73,8 +74,8 @@ get '/game/:round' do
 end
 
 post '/game' do
-  if Decks.find(params[:deck])
-    @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
+  if Deck.find_by_name(params[:deck])
+    @round = Round.create(:user_id => current_user.id, :deck_id => params[:deck])
     redirect '/game/#{@round.id}'
   end
 end
