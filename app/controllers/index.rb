@@ -61,10 +61,22 @@ end
 
 
 get '/game/:round' do
-  @card = @round.current_card
+  unless @round.done?
+    @round.next_card
+    @card = @round.current_card
+    @last_try = @round.last_try
+    return erb :game
+  end
 
+  @done= @round.done
   erb :game
+end
 
+post '/game' do
+  if Decks.find(params[:deck])
+    @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
+    redirect '/game/#{@round.id}'
+  end
 end
 
 post '/game' do
@@ -82,7 +94,8 @@ end
 
 post '/guess' do
   @round = Round.find(params)
-
+  @round.guess(params[:answer])
+  redirect "/game/#{@round.id}"
 end
 
 
