@@ -22,8 +22,8 @@ post '/signup' do
     p params[:user][:password]
     puts @user.password
   end
-  @user
-  erb :profile  
+  authenticate(@user.email, params[:user][:password])
+  redirect "/profile/#{@user.id}"
 end
 
 get '/login' do
@@ -43,7 +43,6 @@ get '/profile/:id' do
     @user
     erb :profile
   else
-    puts "Hey"
     redirect '/login'
   end
 end
@@ -61,16 +60,18 @@ end
 ### GAME
 
 
-get '/game' do
-  params[:deck]
-  @round = Round.create
-  @round.deck << params[:deck]
-
-  @deck = params[:deck]
-  @card = @deck.cards.first
+get '/game/:round' do
+  @card = @round.current_card
 
   erb :game
 
+end
+
+post '/game' do
+  if Decks.find(params[:deck])
+    @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
+    redirect '/game/#{@round.id}'
+  end
 end
 
 get '/user/id/deck/:card' do
@@ -80,7 +81,8 @@ get '/user/id/deck/:card' do
 end
 
 post '/guess' do
-  #logic about what to store/what card to show
+  @round = Round.find(params)
+
 end
 
 

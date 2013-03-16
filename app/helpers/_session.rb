@@ -11,8 +11,16 @@ helpers do
 
 
   def give_token(user)
+    #refactor to actually use a token
     session[:email] = user.email
   end
+
+  def current_user
+    # validate existence of user with the token
+    @current_user ||= User.find_by_email( session[:email] )
+  end
+
+
 
 end
 
