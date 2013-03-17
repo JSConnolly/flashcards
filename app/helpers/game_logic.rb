@@ -6,7 +6,7 @@ helpers do
       @last_card = round.current_card # needed to show previous card's question and answer (see game.erb)
       @card = round.update_current_card # sets the current card to next card in deck
       set_current_card(round) # method is below
-      update_remaining_cards(round)
+      update_remaining_cards(round) # method is below
       @last_try = (params[:last_try] == "true") # @last_try used to show correct or incorrect in game.erb
       return erb :game # gets passed everything with an @ sign above (all the instance variables)
     end 
