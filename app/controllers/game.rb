@@ -1,4 +1,4 @@
-post '/game' do
+post '/game' do  # called from profile.erb. Starts the game by passing in the deck user has chosen from dropdown
 Deck.find(params[:deck])
     @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
     @round.prepare
@@ -25,7 +25,7 @@ get '/game_over/:round_id' do
   erb :game_over
 end
 
-post '/guess' do
+post '/guess' do  
   @round = Round.find(params[:round_id])
   @round.guess(params[:answer], session[:current_card_id])
   redirect "/game/#{@round.id}/#{@round.last_try}/#{params[:remaining_cards]}"
