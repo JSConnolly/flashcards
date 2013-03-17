@@ -37,6 +37,12 @@ post '/login' do
   redirect '/profile/' + @id.to_s
 end
 
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
+
 get '/profile/:id' do
   @user = User.find(params[:id])
   if current_user == @user
@@ -48,12 +54,12 @@ get '/profile/:id' do
 end
 
 
-
-get '/logout' do
-  session.clear
-  redirect '/'
+post '/game' do
+Deck.find(params[:deck])
+    @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
+    @round.prepare
+    redirect "/game/#{@round.id}/#{@round.last_try}/#{@round.remaining_cards.length}"
 end
-
 
 
 
@@ -62,36 +68,25 @@ end
 
 get '/game/:round/:last_try/:remaining_cards' do
   @round = Round.find(params[:round])
-  unless params[:remaining_cards] == 0
-    @round.prepare(params[:remaining_cards])
+  unless params[:remaining_cards] == '0'
+    @round.prepare(params[:remaining_cards]) 
+    @last_card = @round.current_card
     @round.next_card
     session[:current_card_id] = @round.current_card.id
     @card = @round.current_card
-    last_try = (params[:last_try] == "true")
+    @last_try = (params[:last_try] == "true")
     @cards_next_round = params[:remaining_cards].to_i - 1
-    #   puts '*' * 20
-    # puts @cards_next_round
-    #   puts '*' * 20
     return erb :game
-    # redirect "/game/#{@round.id}/#{@round.last_try}/#{@round.remaining_cards.length}"
-  end
-
-  @done= @round.done
-  erb :game
+  end 
+  redirect "/game_over/#{@round.id}"
 end
 
-post '/game' do
-Deck.find(params[:deck])
-    @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
-    @round.prepare
-    
-    redirect "/game/#{@round.id}/#{@round.last_try}/#{@round.remaining_cards.length}"
+
+get '/game_over/:round_id' do
+  @round = Round.find(params[:round_id])
+  erb :game_over
 end
 
-get '/user/id/deck/:card' do
-
-  erb :game
-end
 
 post '/guess' do
   @round = Round.find(params[:round_id])
