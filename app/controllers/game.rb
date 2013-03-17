@@ -8,8 +8,8 @@ end
 
 get '/game/:round/:last_try' do 
   @round = Round.find(params[:round])                     # sets @round variable to current round
-  unless session[:remaining_cards] == 0                 # runs until deck is empty (all cards have been dealt)
-    @round.prepare(session[:remaining_cards])              # this is what iterates through the deck, card by card
+  unless session[:remaining_cards] == 0                   # runs until deck is empty (all cards have been dealt)
+    @round.prepare(session[:remaining_cards])             # this is what iterates through the deck, card by card
     @last_card = @round.current_card                      # needed to show previous card's question and answer
     @card = @round.update_current_card                    # sets the current card to next card in deck    
     session[:current_card_id] = @round.current_card.id    # being used in post '/guess' to pass current card

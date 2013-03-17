@@ -44,16 +44,16 @@ class Round < ActiveRecord::Base
 
   def guess(input, card_id)
     guess = Guess.create( guess: input, round_id: self.id, card_id: card_id)
-    guess.check ? win_card : lose_card
+    guess.check ? increment_correct : increment_incorrect
   end
 
-  def win_card
+  def increment_correct
     self.num_correct += 1
     self.save
     @last_try = true
   end
 
-  def lose_card
+  def increment_incorrect
     self.num_incorrect += 1
     self.save
     @last_try = false
