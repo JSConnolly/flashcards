@@ -14,7 +14,6 @@
     <fieldset>
       <legend> <%= @card.deck.name %> </legend>
       <input type = "hidden" name = "round_id" value = "<%= @round.id %>">
-      <input type = "hidden" name= "remaining_cards" value = "<%= @cards_next_round %>">
     <article>
       <p><%= @card.question %></p>
     </article>
