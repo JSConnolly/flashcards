@@ -15,7 +15,7 @@ helpers do
   end
 
   def session_user_id(user)
-    session[:id] = user.id
+    session[:user_id] = user.id
   end
 
   def current_user

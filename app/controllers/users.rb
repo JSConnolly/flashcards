@@ -26,9 +26,8 @@ get '/logout' do
 end
 
 get '/profile' do
-  @user = User.find(session[:id])
-  if current_user() == @user
-    @user
+  if session[:user_id] 
+    @user = User.find(session[:user_id])
     erb :profile
   else
     redirect '/login'
