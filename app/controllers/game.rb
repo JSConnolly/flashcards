@@ -8,8 +8,7 @@ end
 
 get '/game/:round/:last_try' do 
   @round = Round.find(params[:round])
-  run_game(@round)                    # find me in helpers               
-    # runs once deck is empty
+  run_game(@round)  # find me in helpers under game_logic.rb               
 end
 
 get '/game_over/:round_id' do
