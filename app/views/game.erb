@@ -1,0 +1,28 @@
+<%= erb :_top_nav %>
+<div class="content">
+
+<% unless @round.first_card %>
+  <%if @last_try%>
+    Nice! You got it right!
+  <% else %>
+    Not quite! 
+  <% end %>
+  <%= @last_card.question %>: <%=@last_card.answer%>
+<% end %>
+
+  <form action = "/guess" method = "post" class = "card">
+    <fieldset>
+      <legend> <%= @card.deck.name %> </legend>
+      <input type = "hidden" name = "round_id" value = "<%= @round.id %>">
+      <input type = "hidden" name= "remaining_cards" value = "<%= @cards_next_round %>">
+    <article>
+      <p><%= @card.question %></p>
+    </article>
+    <input type = "text" name = "answer" class = "answer" placeholder = "Answer goes here.">
+    <input type = "submit" value = "Guess!" class = "guess">
+    </fieldset>
+  </form>
+  <%= "cards next round = #{@cards_next_round}" %>
+
+
+</div>

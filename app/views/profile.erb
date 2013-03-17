@@ -1,0 +1,23 @@
+<%= erb :_top_nav %>
+
+<div class="content">
+
+<form action = "/game" method = "post" class = "game_choose">
+  <select name = "deck">
+    <option>Choose A Deck</option>
+    <% @decks = Deck.all %>
+    <% @decks.each do |type| %>
+      <option value= "<%= type.id %>" ><%=type.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Play!" class = "choose_button">
+</form>
+
+<article class = "stats">
+  <h2>Stats</h2>
+  <ul>
+    <li>Rounds</li>
+  </ul>
+</article>
+
+</div>

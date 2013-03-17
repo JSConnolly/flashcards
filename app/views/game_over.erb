@@ -1,0 +1,14 @@
+<%= erb :_top_nav %>
+<h1>Game complete!</h1>
+
+<h2>Your stats this round</h2>
+<p> correct: <%= @round.num_correct %></p>
+<p> incorrect: <%= @round.num_incorrect %></p>
+<%= ((@round.num_correct.to_f / @round.deck_length) *100 ).round(2) %>%
+
+<h2>Your previous rounds:</h2>
+<ul>
+<% current_user.rounds.order("created_at DESC").each do |round|  %>
+<li><%= round.created_at.to_date %>: <%= Deck.find(round.deck_id).name %> (<%= (round.num_correct.to_f/ (round.num_correct + round.num_incorrect)* 100).round(2) %>%)</li>
+<% end %>
+</ul>
