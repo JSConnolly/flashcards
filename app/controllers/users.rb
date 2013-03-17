@@ -8,7 +8,7 @@ post '/signup' do
     # errors
   end
   authenticate(@user.email, params[:user][:password])
-  redirect "/profile/#{@user.id}"
+  redirect "/profile"
 end
 
 get '/login' do
@@ -17,8 +17,7 @@ end
 
 post '/login' do
   authenticate(params[:email], params[:password])
-  @id = User.find_by_email(params[:email]).id
-  redirect '/profile/' + @id.to_s
+  redirect '/profile'
 end
 
 get '/logout' do
@@ -26,9 +25,9 @@ get '/logout' do
   redirect '/'
 end
 
-get '/profile/:id' do
-  @user = User.find(params[:id])
-  if current_user == @user
+get '/profile' do
+  @user = User.find(session[:id])
+  if current_user() == @user
     @user
     erb :profile
   else
