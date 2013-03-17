@@ -38,7 +38,7 @@ class Round < ActiveRecord::Base
   end
 
 
-  def next_card
+  def update_current_card
     @current_card = @remaining_cards.pop
   end
 
