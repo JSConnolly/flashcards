@@ -17,7 +17,7 @@ helpers do
     round.prepare(session[:remaining_cards]) # this is what iterates through the deck, card by card
   end
 
-  def set_current_card (round)
+  def set_current_card(round)
     session[:current_card_id] = round.current_card.id  # being used in post '/guess' to pass current card
   end
 
