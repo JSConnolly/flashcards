@@ -3,9 +3,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  @user = User.new( :name => params[:user][:name], :email => params[:user][:email])
-  @user.password =  params[:user][:password]
-
+  @user = User.new(params[:user])
   unless @user.save
     # errors
   end

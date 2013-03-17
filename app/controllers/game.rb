@@ -1,4 +1,4 @@
-post '/game' do  # called from profile.erb. Starts game by passing in deck user chooses from dropdown
+post '/game' do                                          # called from profile.erb
 Deck.find(params[:deck])
     @round = Round.create( :user_id => current_user.id, :deck_id => params[:deck] )
     @round.prepare
@@ -17,7 +17,7 @@ get '/game/:round/:last_try' do
     session[:remaining_cards] = @round.remaining_cards.length
     return erb :game
   end 
-  redirect "/game_over/#{@round.id}"                # runs once deck is empty
+  redirect "/game_over/#{@round.id}"                      # runs once deck is empty
 end
 
 get '/game_over/:round_id' do
