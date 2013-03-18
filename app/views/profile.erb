@@ -5,8 +5,7 @@
 <form action = "/game" method = "post" class = "game_choose">
   <select name = "deck">
     <option>Choose A Deck</option>
-    <% @decks = Deck.all %>
-    <% @decks.each do |type| %>
+    <% session[:decks].each do |type| %>
       <option value= "<%= type.id %>" ><%=type.name %></option>
     <% end %>
   </select>

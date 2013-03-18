@@ -1,4 +1,9 @@
-
-
-<% @deck.cards.each do |card| %>
-<%=  %>
+<div class="content">
+  <div class="deck-info">
+    <h1><%= @deck.name %> Deck </h1>
+    <h2>Cards</h2>
+    <% @deck.cards.each do |card| %>
+      <%= card.question %><br>
+    <% end %>
+  </div>
+</div>
