@@ -2,8 +2,10 @@
   <div class="deck-info">
     <h1><%= @deck.name %> Deck </h1>
     <h2>Cards</h2>
-    <% @deck.cards.each do |card| %>
-      <%= card.question %><br>
-    <% end %>
+    <ul id="sortable-list">
+      <% @deck.cards.each do |card| %>
+        <li class="ui-state-default" title="<%= card.answer %>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= card.question %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="/js/app.js"></script>
-  <script src="/js/bootstrap.js"></script>
-  <title>Flashcards</title>
-
-</head>
-
+  <head>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/jquery_ui.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <title>Flashcards</title>
+  </head>
 
   <body>
     <div class = "container">
@@ -52,15 +50,11 @@
       </div><!-- /.navbar -->
       <%= yield %>
       <div id="footer">
-        <div class="container">
-          <p class="credits">
-            "A Ryan, Katey, Bryan, and J production - &copy; 2013"
-          </p>
-        </div>
+        <p class="credits">
+          "A Ryan, Katey, Bryan, and J production - &copy; 2013"
+        </p>
       </div>
     </div>
   </body>
-
-  
 
 </html>
