@@ -1,8 +1,12 @@
 $(function(){
+
   $(".btn.btn-med.btn-warning").hide()
+  
   $('form.guess').submit(function(e){
     e.preventDefault();
     console.log(this);
+   
+
     $.ajax({
       type: "POST",
       data: $(this).serialize(),
@@ -21,5 +25,8 @@ $(function(){
     .fail(function(){
       alert("This shit failed!");
     });
+
+
   });
+  
 });
