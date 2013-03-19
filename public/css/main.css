@@ -6,17 +6,29 @@
 html, body {
   height: 100%;
 }
+
+#profile_legend {
+  margin-bottom: 50px;
+}
+
+#feedback {
+  margin: 15px 0;
+  padding: 0px 0;
+  height: 30px;
+  width: 500px;
+}
 .wrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
 }
-#footer, .push {
-  height: 142px; /* .push must be the same height as .footer */
-
+#footer {
+  margin-top:200px;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
 }
-
 #sortable-list {
   list-style-type: none; 
   margin: 0; 
@@ -66,11 +78,6 @@ fieldset {
     border-color: #3CD884;
   }
 
-legend {
-  font-size: 40px;
-  color: #027236;
-}
-
 .login-signup-btns {
   float: right;
 }
@@ -119,36 +126,28 @@ h1 {
 
 /* Profile page css */
 
+
+
+.btn.btn-medium.btn-success {
+  margin: 0 0 11px 5px;
+}
+
+form.game-choose {
+  margin-top:30px;
+}
+
 article {
-  width: 100%
-  padding: 20px;
+  width: 100%;
+  padding: 20px 0px;
 }
-
-form.choose {
-  background-color: #ff3300;
-  margin: auto;
-  width: 520px;
-}
-
 
 form.card {
   clear:both;
+  background: black;
 }
 
-  .card legend {
-    font-size: 48px;
-  }
+.btn.card {
+  margin: 0 0 11px 5px;
+}
 
-  .card input {
-    height: 60px;
-  }
-  .card input[type=text] {
-    width: 640px;
-  }
-
-  .card input[type=submit] {
-    padding: 0px 40px;
-    height: 60px;
-    background-color: red;
-  }
 

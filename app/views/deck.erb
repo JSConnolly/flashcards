@@ -1,11 +1,9 @@
-<div class="content">
-  <div class="deck-info">
-    <h1><%= @deck.name %> Deck </h1>
-    <h2>Cards</h2>
-    <ul id="sortable-list">
-      <% @deck.cards.each do |card| %>
-        <li class="ui-state-default" title="<%= card.answer %>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= card.question %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="deck-info">
+  <legend><%= @deck.name %> Deck </legend>
+  <p>Cards</p>
+  <ul id="sortable-list">
+    <% @deck.cards.each do |card| %>
+      <li class="ui-state-default" title="<%= card.answer %>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= card.question %></li>
+    <% end %>
+  </ul>
 </div>

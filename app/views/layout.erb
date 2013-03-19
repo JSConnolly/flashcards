@@ -41,14 +41,16 @@
                   <a href = "/logout" class="btn btn-small btn-link">Log out</a>  
                 <% else %>
                   <a href = "/login" class="btn btn-small btn-link">Log On!</a>
+                  <a href ="/signup" class="btn btn-small btn-warning">Sign Up!</a>
                 <% end %>
-                <a href ="/signup" class="btn btn-small btn-warning">Sign Up!</a>
               </div>
             </div><!-- /.nav-collapse -->
           </div><!-- /.container -->
         </div><!-- /.navbar-inner -->
       </div><!-- /.navbar -->
-      <%= yield %>
+      <div class="content">
+        <%= yield %>
+      </div>
       <div id="footer">
         <p class="credits">
           "A Ryan, Katey, Bryan, and J production - &copy; 2013"

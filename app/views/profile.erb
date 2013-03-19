@@ -1,26 +1,19 @@
-<%= erb :_top_nav %>
 
-<div class="content">
-
-<form action = "/game" method = "post" class = "game_choose">
+<legend id="profile_legend">Welcome <%= @user.name %>!</legend>
+<p>To get started choose a deck below</p>
+<form action = "/game" method = "post" class = "game-choose">
   <select name = "deck">
     <option>Choose A Deck</option>
     <% session[:decks].each do |type| %>
       <option value= "<%= type.id %>" ><%=type.name %></option>
     <% end %>
   </select>
-  <input type="submit" value="Play!" class = "choose_button">
+  <input type="submit" value="Play!" class = "btn btn-medium btn-success">
 </form>
 
-<article class = "stats">
+<!-- <article class = "stats">
   <h2>Stats</h2>
   <ul>
     <li>Rounds</li>
   </ul>
-</article>
-
-<% 100.times do %>
-<%= ('*' * 20) + "\n\n"  %>
-<% end %>
-
-</div>
+</article> -->
